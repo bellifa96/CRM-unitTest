@@ -1,0 +1,6 @@
+{% if app.user %}
+  <h4>update user</h4>
+{% else %}
+  {{ form(form,{'attr':{'class':'form-control'}}) }}
+
+{% endif %}

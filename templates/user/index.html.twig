@@ -1,0 +1,35 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <ul>
+            {% for user in users %}
+                <a href="{{ path('user_delete',{'id': user.id}) }}">Delete</a>
+               <a href="{{ path('user_app_user_update',{'id':user.id}) }}">update</a>
+
+
+                <span>User :</span>
+                <li>First name : {{ user.getFirstName }}
+                    Last name :{{ user.getLastName }}
+                    Email : {{ user.getEmail }}
+                    Age: {{ user.age }}
+                    created at : {{ user.getCreatedAt|date('d/m/Y')  }}
+                    role: {{ user.getRoles|join('|') }}
+                </li>
+
+
+            {% endfor %}
+        </ul>
+
+    </div>
+
+{% endblock %}
+

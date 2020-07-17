@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}Sign UP{% endblock %}
+
+{% block body %}
+    {% if app.user and app.user.getRoles == 'ROLE_USER' %}
+        <h4>vous êtes connecté</h4>
+    {% else %}
+        {{ form(form,{'attr':{'class':'form-control'}}) }}
+
+    {% endif %}
+
+{% endblock %}
+

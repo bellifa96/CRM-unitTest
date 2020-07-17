@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+         Prénom {{ form_widget(form.firstName,{'attr':{'class':'form-control mb-2'}}) }}
+        </div>
+        <div class="col-md-6">
+        Nom  {{ form_widget(form.lastName,{'attr':{'class':'form-control mb-2'}}) }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+       Email   {{ form_widget(form.email,{'attr':{'class':'form-control mb-2'}}) }}
+
+        </div>
+        <div class="col-md-6">
+         Phone {{ form_widget(form.phone,{'attr': {'class':'form-control mb-2'}}) }}
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+         Tag {{ form_widget(form.tag,{'attr':{'class':'form-control mb-2'}}) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <button class="btn btn-info ml-3">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
