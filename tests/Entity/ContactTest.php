@@ -18,9 +18,9 @@ class ContactTest extends TestCase
     $contact->setLastName('no');
     $contact->setPhone('09.01.02.03.08');
     $contact->setTag('tag');
-    if($this->testUser()){
-      $contact->setUser($this->testUser());
-    }else return false;
+   if($this->testUser()){
+      $this->assertEquals($contact->getUser(),$this->testUser());
+    }
     $this->assertEquals('coucou@gmail.com',$contact->getEmail());
     $this->assertRegExp('/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/',$contact->getEmail()) &&
 
@@ -29,6 +29,29 @@ class ContactTest extends TestCase
 
     $this->assertEquals('09.01.02.03.08',$contact->getPhone());
     $this->assertEquals('tag',$contact->getTag());
+    $this->assertRegExp('/^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$/',$contact->getPhone());
+
+
+
+
+
+    $contact1 = new Contact();
+    $contact1->setEmail('coucgmail.com');
+    $contact1->setFirstName(555);
+    $contact1->setLastName(85);
+    $contact1->setPhone('phone');
+    $contact1->setTag('pas_tag');
+    if($this->testUser()){
+      $this->assertEquals($contact1->getUser(),$this->testUser());
+    }
+    $this->assertNotEquals('coucou@gmail.com',$contact1->getEmail());
+    $this->assertNotRegExp('/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/',$contact1->getEmail()) &&
+    $this->assertNotEquals('yes',$contact1->getFirstName());
+    $this->assertNotEquals('no',$contact1->getLastName());
+
+    $this->assertNotEquals('09.01.02.03.08',$contact1->getPhone());
+    $this->assertNotEquals('tag',$contact1->getTag());
+    $this->assertNotRegExp('/^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$/',$contact1->getPhone());
 
   }
   public function testUser(){
